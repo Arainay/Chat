@@ -2,6 +2,7 @@ import React from 'react';
 import { Switch, Route, Redirect } from 'react-router-dom';
 import Login from '@app/components/Login';
 import Chat from '@app/components/Chat';
+import './app.scss';
 
 const App = () => {
   return (
