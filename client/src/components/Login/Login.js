@@ -1,4 +1,5 @@
 import React from 'react';
+import { useHistory } from 'react-router-dom';
 
 const FIELD_NAMES = {
   NAME: 'name',
@@ -6,14 +7,22 @@ const FIELD_NAMES = {
 };
 
 const Login = () => {
+  const history = useHistory();
+
   const login = event => {
     event.preventDefault();
 
     const name = event.target[FIELD_NAMES.NAME].value;
     const room = event.target[FIELD_NAMES.ROOM].value;
 
+    if (!name || !room) {
+      return;
+    }
+
     // eslint-disable-next-line no-console
     console.log({ name, room });
+
+    history.push(`/chat/${room}/${name}`);
   };
 
   return (
