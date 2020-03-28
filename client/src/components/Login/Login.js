@@ -20,9 +20,6 @@ const Login = () => {
       return;
     }
 
-    // eslint-disable-next-line no-console
-    console.log({ name, room });
-
     history.push(`/chat/${room}/${name}`);
   };
 
