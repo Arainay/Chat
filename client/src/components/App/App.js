@@ -7,7 +7,7 @@ const App = () => {
   return (
     <Switch>
       <Route path="/login" component={Login}/>
-      <Route path="/chat" component={Chat}/>
+      <Route path="/chat/:room/:name" component={Chat}/>
       <Redirect to="/login"/>
     </Switch>
   );
