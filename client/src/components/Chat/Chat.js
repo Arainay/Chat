@@ -14,9 +14,9 @@ const Chat = () => {
   useEffect(() => {
     socket = io('localhost:5000');
 
-    socket.emit('join', { name, room }, (msg) => {
+    socket.emit('join', { name, room }, ({ error }) => {
       // eslint-disable-next-line no-console
-      console.log(msg);
+      console.log(error);
     });
 
     return () => {
