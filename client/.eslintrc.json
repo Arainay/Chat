@@ -31,7 +31,7 @@
     ],
 
     "semi": ["error", "always"],
-    "no-console": "error",
+    "no-console": "warn",
     "max-len": ["error", { "code": 120, "tabWidth": 4 }]
   }
 }
