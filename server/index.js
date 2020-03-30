@@ -10,6 +10,8 @@ const app = express();
 const server = http.createServer(app);
 const io = socketIo(server);
 
+const generateId = () => Math.random().toString(36).substring(2, 15) + Math.random().toString(36).substring(2, 15);
+
 io.on('connection', socket => {
   console.log('New connection');
 
@@ -21,8 +23,8 @@ io.on('connection', socket => {
     }
 
     socket.join(user.room, () => {
-      socket.emit('message', { user: 'admin', text: `${user.name}, welcome to the room ${user.room}` });
-      socket.broadcast.to(user.room).emit('message', { user: 'admin', text: `${user.name} has joined` });
+      socket.emit('message', { id: generateId(), user: 'admin', text: `${user.name}, welcome to the room ${user.room}` });
+      socket.broadcast.to(user.room).emit('message', { id: generateId(), user: 'admin', text: `${user.name} has joined` });
     });
 
     callback();
@@ -31,7 +33,14 @@ io.on('connection', socket => {
   socket.on('sendMessage', (message) => {
     const { user } = getUser(socket.id);
 
-    io.to(user.room).emit('message', { user: user.name, text: message });
+    io.to(user.room).emit(
+      'message',
+      {
+        id : generateId(),
+        user: user.name,
+        text: message
+      }
+    );
   });
 
   socket.on('disconnect', () => {
