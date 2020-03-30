@@ -3,6 +3,7 @@ import { Redirect, useParams } from 'react-router-dom';
 import io from 'socket.io-client';
 import MessageForm from './MessageForm';
 import Messages from './Messages';
+import ChatInfo from './ChatInfo';
 
 let socket;
 
@@ -38,6 +39,7 @@ const Chat = () => {
 
   return (
     <article className="chat">
+      <ChatInfo room={room}/>
       <Messages messages={messages}/>
       <MessageForm send={sendMessage}/>
     </article>

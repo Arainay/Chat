@@ -1,0 +1,26 @@
+.chat-info {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem;
+  color: #fff;
+  background-color: #336af8;
+
+  &__online {
+    width: .5rem;
+    height: .5rem;
+    border-radius: 50%;
+    background-color: #65dd19;
+    box-shadow: 0 0 0.25rem 0.25rem rgba(7, 255, 0, 0.33);
+  }
+
+  &__room {
+    margin: 0 1rem;
+  }
+
+  &__close {
+    width: .6rem;
+    margin-left: auto;
+    cursor: pointer;
+  }
+}
