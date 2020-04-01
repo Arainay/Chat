@@ -22,7 +22,19 @@ const MessageForm = ({ send }) => {
 
   return (
     <form className="message-form" onSubmit={submit}>
-      <input type="text" className="message-form__input" value={message} onChange={changeMessage}/>
+      <input
+        type="text"
+        className="message-form__input"
+        value={message}
+        onChange={changeMessage}
+        placeholder="Type a message..."
+      />
+      <button
+        type="submit"
+        className="message-form__send-button"
+      >
+        Send
+      </button>
     </form>
   );
 };

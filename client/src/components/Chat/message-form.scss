@@ -1,9 +1,18 @@
 .message-form {
+	display: flex;
 
 	&__input {
-		width: 100%;
+		flex-grow: 1;
 		padding-left: 1rem;
     font-size: 1rem;
     line-height: 2rem;
+	}
+
+	&__send-button {
+		padding: 0 2rem;
+		border: none;
+		letter-spacing: 1px;
+		color: #fff;
+  	background-color: #336af8;
 	}
 }
