@@ -1,4 +1,5 @@
 import React from 'react';
+import './messages.scss';
 
 const Messages = ({ messages }) => console.log(messages) || (
   <section className="messages">

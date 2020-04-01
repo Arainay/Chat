@@ -4,6 +4,7 @@ import io from 'socket.io-client';
 import MessageForm from './MessageForm';
 import Messages from './Messages';
 import ChatInfo from './ChatInfo';
+import './chat.scss';
 
 let socket;
 
@@ -39,9 +40,11 @@ const Chat = () => {
 
   return (
     <article className="chat">
-      <ChatInfo room={room}/>
-      <Messages messages={messages}/>
-      <MessageForm send={sendMessage}/>
+      <div className="chat__inner">
+        <ChatInfo room={room}/>
+        <Messages messages={messages}/>
+        <MessageForm send={sendMessage}/>
+      </div>
     </article>
   );
 };

@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import './message-form.scss';
 
 const MessageForm = ({ send }) => {
   const [message, setMessage] = useState('');
@@ -21,7 +22,7 @@ const MessageForm = ({ send }) => {
 
   return (
     <form className="message-form" onSubmit={submit}>
-      <input type="text" className="chat__message" value={message} onChange={changeMessage}/>
+      <input type="text" className="message-form__input" value={message} onChange={changeMessage}/>
     </form>
   );
 };
