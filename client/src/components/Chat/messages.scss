@@ -1,3 +1,9 @@
 .messages {
 	flex-grow: 1;
+	padding: 1rem;
+
+	&__username {
+		margin-right: .5rem;
+		font-weight: 700;
+	}
 }
