@@ -23,6 +23,7 @@ const MessageForm = ({ send }) => {
   return (
     <form className="message-form" onSubmit={submit}>
       <input
+        autoFocus
         type="text"
         className="message-form__input"
         value={message}
