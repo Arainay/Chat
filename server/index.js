@@ -43,6 +43,12 @@ io.on('connection', socket => {
     );
   });
 
+  socket.on('typing', () => {
+    const { user } = getUser(socket.id);
+
+    io.to(user.room).emit('userTyping', { user: user.name });
+  });
+
   socket.on('disconnect', () => {
     console.log('Disconnected');
   });

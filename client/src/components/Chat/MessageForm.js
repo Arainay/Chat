@@ -1,11 +1,12 @@
 import React, { useState } from 'react';
 import './message-form.scss';
 
-const MessageForm = ({ send }) => {
+const MessageForm = ({ send, typeText }) => {
   const [message, setMessage] = useState('');
 
   const changeMessage = event => {
     setMessage(event.target.value);
+    typeText();
   };
 
   const submit = event => {

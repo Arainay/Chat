@@ -20,6 +20,10 @@ const Chat = () => {
     socket.emit('sendMessage', message);
   };
 
+  const typeText = () => {
+    socket.emit('typing');
+  };
+
   useEffect(() => {
     socket = io('localhost:5000');
 
@@ -33,6 +37,10 @@ const Chat = () => {
       setMessages(messages => ([...messages, message]));
     });
 
+    socket.on('userTyping', ({ user }) => {
+      console.log(`${user} is typing...`);
+    });
+
     return () => {
       socket.disconnect();
     };
@@ -43,7 +51,7 @@ const Chat = () => {
       <div className="chat__inner">
         <ChatInfo room={room}/>
         <Messages messages={messages}/>
-        <MessageForm send={sendMessage}/>
+        <MessageForm send={sendMessage} typeText={typeText}/>
       </div>
     </article>
   );
