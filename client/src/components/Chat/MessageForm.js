@@ -1,12 +1,20 @@
 import React, { useState } from 'react';
+import { debounce } from '@app/helpers';
 import './message-form.scss';
 
 const MessageForm = ({ send, typeText }) => {
   const [message, setMessage] = useState('');
 
   const changeMessage = event => {
-    setMessage(event.target.value);
-    typeText();
+    const { value } = event.target;
+
+    setMessage(value);
+
+    if (value.length > 1) {
+      debounce(typeText, 300);
+    } else {
+      typeText();
+    }
   };
 
   const submit = event => {
