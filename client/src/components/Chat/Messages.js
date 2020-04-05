@@ -1,13 +1,12 @@
 import React from 'react';
 import ScrollToBottom from 'react-scroll-to-bottom';
 import { useParams } from 'react-router-dom';
+import ReactEmoji from 'react-emoji';
 import classnames from 'classnames';
 import './messages.scss';
 
 const Messages = ({ messages }) => {
   const { name } = useParams();
-
-  console.log({name, messages});
 
   return (
     <ScrollToBottom className="messages">
@@ -23,7 +22,7 @@ const Messages = ({ messages }) => {
               {item.user}
             </span>
             <span className={classnames('messages__item-text', { 'messages__item-text--self': isSelf })}>
-              {item.text}
+              {ReactEmoji.emojify(item.text)}
             </span>
           </section>
         );
