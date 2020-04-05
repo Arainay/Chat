@@ -41,6 +41,10 @@ const Chat = () => {
       console.log(`${user} is typing...`);
     });
 
+    socket.on('roomData', ({ room, users }) => {
+      console.log({ room, users });
+    });
+
     return () => {
       socket.disconnect();
     };
