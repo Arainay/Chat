@@ -1,6 +1,7 @@
 const express = require('express');
 const socketIo = require('socket.io');
 const http = require('http');
+const cors = require('cors');
 const router = require('./router');
 const { addUser, deleteUser, getUser, getUsersInRoom } = require('./users');
 
@@ -61,5 +62,6 @@ io.on('connection', socket => {
 });
 
 app.use(router);
+app.use(cors());
 
 server.listen(PORT, () => { console.log(`Server nas started on port ${PORT}`) });
