@@ -80,7 +80,7 @@ module.exports = {
   output: {
     path: outputPath,
     publicPath: '/',
-    filename: 'bundle.js',
+    filename: '[name].[hash].js',
     pathinfo: true,
   },
   plugins: [
@@ -105,10 +105,22 @@ module.exports = {
         },
         extractComments: false
       })
-    ]
+    ],
+    concatenateModules: true,
+    moduleIds: 'hashed',
+    runtimeChunk: 'single',
+    splitChunks: {
+      cacheGroups: {
+        vendor: {
+          test: /[\\/]node_modules[\\/]/,
+          name: 'vendors',
+          chunks: 'all',
+        }
+      }
+    }
   } : {},
   resolve: {
-    extensions: ['*', '.js', '.jsx'],
+    extensions: ['.js', '.jsx'],
     alias: {
       '@app': path.resolve(__dirname, 'src')
     }
