@@ -1,16 +1,19 @@
-import React from 'react';
+import React, { lazy, Suspense } from 'react';
 import { Switch, Route, Redirect } from 'react-router-dom';
-import Login from '@app/components/Login';
-import Chat from '@app/components/Chat';
 import './app.scss';
+
+const Login = lazy(()=> import('@app/components/Login'));
+const Chat = lazy(() => import('@app/components/Chat'));
 
 const App = () => {
   return (
-    <Switch>
-      <Route path="/login" component={Login}/>
-      <Route path="/chat/:room/:name" component={Chat}/>
-      <Redirect to="/login"/>
-    </Switch>
+    <Suspense fallback={<div>Loading...</div>}>
+      <Switch>
+        <Route path="/login" component={Login}/>
+        <Route path="/chat/:room/:name" component={Chat}/>
+        <Redirect to="/login"/>
+      </Switch>
+    </Suspense>
   );
 };
 
