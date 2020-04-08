@@ -9,8 +9,12 @@ const App = () => {
   return (
     <Suspense fallback={<div>Loading...</div>}>
       <Switch>
-        <Route path="/login" component={Login}/>
-        <Route path="/chat/:room/:name" component={Chat}/>
+        <Route path="/login">
+          <Login/>
+        </Route>
+        <Route path="/chat/:room/:name">
+          <Chat/>
+        </Route>
         <Redirect to="/login"/>
       </Switch>
     </Suspense>
